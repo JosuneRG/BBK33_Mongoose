@@ -1,19 +1,16 @@
 const mongoose = require('mongoose')
 
-const ProductSchema = new mongoose.Schema(
-    {
-        name: String,
-        price: Number,
-    },
-    
-    { timestamps: true },
+// ✅ PRIMERO se declara el schema
+const ProductSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: String,
+  price: Number,
+})
 
-    ProductSchema.index({
-        name: 'text',
-    })
-)
+// ✅ DESPUÉS puedes usarlo, como aquí con .index
+ProductSchema.index({
+  name: 'text',
+  description: 'text',
+})
 
-
-const Product = mongoose.model('Product', ProductSchema)
-
-module.exports = Product
+module.exports = mongoose.model('Product', ProductSchema)
