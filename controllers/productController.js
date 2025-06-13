@@ -1,7 +1,10 @@
+// Importamos el modelo de Mongoose 
 const Product = require('../models/product')
 
+// Creamos un objeto controlador
 const ProductController = {
-    //crear BBDD
+    
+    //Crear un nuevo producto en la base de datos
     async create(req, res) {
         try {
             const product = await Product.create(req.body)
@@ -14,7 +17,7 @@ const ProductController = {
         }
     },
 
-    //Ver o leer datos de bbdd
+    // Obtener todos los productos de la base de datos
     async getAll(req, res) {
         try {
             const products = await Product.find()
@@ -24,6 +27,7 @@ const ProductController = {
         }
     },
 
+    // Obtener un producto por su ID
     async getById(req, res) {
         try {
             const product = await Product.findById(req.params._id)
@@ -33,6 +37,7 @@ const ProductController = {
         }
     },
 
+    // Buscar productos por nombre (parcial, insensible a mayúsculas/minúsculas)
     async getProductsByName(req, res) {
         try {
             const name = new RegExp(req.params.name, 'i')
@@ -46,6 +51,7 @@ const ProductController = {
         }
     },
 
+    // Actualizar un producto existente por ID
     async update(req, res) {
         try {
             const product = await Product.findByIdAndUpdate(
@@ -60,6 +66,7 @@ const ProductController = {
         }
     },
 
+    // Eliminar un producto por ID
     async delete(req, res) {
         try {
             const product = await

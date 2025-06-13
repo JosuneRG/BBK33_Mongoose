@@ -1,4 +1,4 @@
-/config/
-/docker-compose
-/node_modules/
+node_modules/
+config/
+docker-compose.yml
 
